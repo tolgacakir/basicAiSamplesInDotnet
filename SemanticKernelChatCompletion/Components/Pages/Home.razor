@@ -1,0 +1,64 @@
+﻿@page "/"
+@rendermode InteractiveServer
+@using Microsoft.SemanticKernel;
+@using Microsoft.SemanticKernel.ChatCompletion
+
+
+<PageTitle>Home</PageTitle>
+
+<h1>Hello, Ai!</h1>
+<div>
+    <textarea id="prompt"
+              @bind="userPrompt"
+              placeholder="Enter your prompt..."
+              style="width: 100%; min-height: 150px; resize: vertical; padding: 8px; font-size: 1rem;" />
+</div>
+    <button class="btn btn-primary" @onclick="SendPrompt">Send</button>
+
+@if (modelResponse != null)
+{
+    <h4>Response:</h4>
+    <div style="white-space: pre-wrap; word-wrap: break-word; border: 1px solid #ccc; padding: 10px;">
+        @modelResponse
+    </div>
+}
+
+@code
+{
+    private string modelId;
+    private string userPrompt;
+    private string modelResponse;
+    private ChatHistory history = [];
+
+
+    private async Task SendPrompt()
+    {
+        modelResponse = "";
+        #pragma warning disable SKEXP0070
+        IKernelBuilder kernelBuilder = Kernel.CreateBuilder();
+        kernelBuilder.AddOllamaChatCompletion(
+            modelId: "deepseek-r1:14b",                     // E.g. "phi3" if phi3 was downloaded as described above.
+            endpoint: new Uri("http://localhost:11434"),    // E.g. "http://localhost:11434" if Ollama has been started in docker as described above.
+            serviceId: null                                 // Optional; for targeting specific services within Semantic Kernel
+        );
+        Kernel kernel = kernelBuilder.Build();
+        
+        var chatCompletionService = kernel.GetRequiredService<IChatCompletionService>();
+        
+        history.AddUserMessage(userPrompt);
+
+        var response = await chatCompletionService.GetChatMessageContentAsync(
+            history,
+            kernel: kernel
+        );
+
+        SetResponse(response.Content);
+    }
+
+    private void SetResponse(string response)
+    {
+        modelResponse = response;
+        history.AddAssistantMessage(response);
+        userPrompt = "";
+    }
+}
