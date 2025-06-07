@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SemanticKernelChatCompletion", "SemanticKernelChatCompletion\SemanticKernelChatCompletion.csproj", "{115C68FD-08C9-4E9D-8E21-A40D16C374E1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCP.Server", "MCP.Server\MCP.Server.csproj", "{CD0C2121-2CDC-4C1D-A85E-2007F458B0BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCP.Client", "MCP.Client\MCP.Client.csproj", "{F91A3774-0073-4089-BA14-1008EF24D362}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,13 @@ Global
 		{115C68FD-08C9-4E9D-8E21-A40D16C374E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{115C68FD-08C9-4E9D-8E21-A40D16C374E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{115C68FD-08C9-4E9D-8E21-A40D16C374E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD0C2121-2CDC-4C1D-A85E-2007F458B0BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD0C2121-2CDC-4C1D-A85E-2007F458B0BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD0C2121-2CDC-4C1D-A85E-2007F458B0BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD0C2121-2CDC-4C1D-A85E-2007F458B0BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F91A3774-0073-4089-BA14-1008EF24D362}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F91A3774-0073-4089-BA14-1008EF24D362}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F91A3774-0073-4089-BA14-1008EF24D362}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F91A3774-0073-4089-BA14-1008EF24D362}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
